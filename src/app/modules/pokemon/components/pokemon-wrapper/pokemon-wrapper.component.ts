@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, OnDestroy } from '@angular/core';
+import { Component, Input, OnDestroy, AfterViewInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 
 import { takeUntil } from 'rxjs/operators';
@@ -11,7 +11,7 @@ import { formatIndex } from '../../shared/_utils';
   templateUrl: './pokemon-wrapper.component.html',
   styleUrls: ['./pokemon-wrapper.component.styl']
 })
-export class PokemonWrapperComponent implements OnInit, OnDestroy {
+export class PokemonWrapperComponent implements AfterViewInit, OnDestroy {
 
   @Input() name: string;
   @Input() weebName: string;
@@ -22,7 +22,7 @@ export class PokemonWrapperComponent implements OnInit, OnDestroy {
 
   constructor(private router: Router) { }
 
-  ngOnInit() {
+  ngAfterViewInit() {
     this.getBackgroundColor();
 
     this.router.events.pipe(takeUntil(this._destroy$)).subscribe(ev => {

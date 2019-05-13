@@ -3,6 +3,8 @@ import { BrowserModule } from '@angular/platform-browser/';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 
+import { PokemonService } from './services/pokemon.service';
+
 @NgModule({
   imports: [
     BrowserModule,
@@ -12,6 +14,9 @@ import { RouterModule } from '@angular/router';
   exports: [
     BrowserModule,
     BrowserAnimationsModule
+  ],
+  providers: [
+    PokemonService
   ]
 })
 

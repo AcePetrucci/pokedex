@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { pokedex } from '../mocks/pokedex';
+import { pokedex } from '../../shared/mocks/pokedex';
 import { of } from 'rxjs';
 import { map } from 'rxjs/operators';
 
@@ -14,7 +14,7 @@ export class PokemonService {
   public getPokemonById(id: number) {
     return this.getPokemon().pipe(
       map(pokemon => pokemon.
-        filter(poke => poke.id === id)[0]
+        find(poke => poke.id === id)
       )
     );
   }

@@ -2,8 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
-import { PokemonService } from './services/pokemon.service';
-
 @NgModule({
   imports: [
     CommonModule,
@@ -12,9 +10,6 @@ import { PokemonService } from './services/pokemon.service';
   exports: [
     CommonModule,
     RouterModule,
-  ],
-  providers: [
-    PokemonService
   ]
 })
 

@@ -1,36 +1,23 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { PokemonService } from 'src/app/shared/services/pokemon.service';
+import { PokemonService } from 'src/app/core/services/pokemon.service';
 
-import { map, switchMap, takeUntil } from 'rxjs/operators';
-import { Subject } from 'rxjs';
+import { map, switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-pokemon-details-page',
   templateUrl: './pokemon-details-page.component.html',
   styleUrls: ['./pokemon-details-page.component.styl']
 })
-export class PokemonDetailsPageComponent implements OnInit, OnDestroy {
+export class PokemonDetailsPageComponent {
 
-  private _destroy$: Subject<boolean> = new Subject<boolean>();
-  pokemon$: any;
+  pokemon$ = this.route.params.pipe(
+    map(route => +route.id),
+    switchMap(id => this.pokemonService.getPokemonById(id)));
 
   constructor(
     private pokemonService: PokemonService,
     private route: ActivatedRoute,
   ) { }
-
-  ngOnInit() {
-    this.route.params.pipe(
-      map(route => parseInt(route.id, 10)),
-      switchMap(id => this.pokemonService.getPokemonById(id)),
-      takeUntil(this._destroy$)
-    ).subscribe(pokemon => this.pokemon$ = pokemon);
-  }
-
-  ngOnDestroy() {
-    this._destroy$.next(true);
-    this._destroy$.unsubscribe();
-  }
 }
