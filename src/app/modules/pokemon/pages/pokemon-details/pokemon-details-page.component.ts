@@ -13,8 +13,8 @@ import { Subject } from 'rxjs';
 })
 export class PokemonDetailsPageComponent implements OnInit, OnDestroy {
 
-  public pokemon: any;
-  private destroy$: Subject<boolean> = new Subject<boolean>();
+  private _destroy$: Subject<boolean> = new Subject<boolean>();
+  pokemon$: any;
 
   constructor(
     private pokemonService: PokemonService,
@@ -25,12 +25,12 @@ export class PokemonDetailsPageComponent implements OnInit, OnDestroy {
     this.route.params.pipe(
       map(route => parseInt(route.id, 10)),
       switchMap(id => this.pokemonService.getPokemonById(id)),
-      takeUntil(this.destroy$)
-    ).subscribe(pokemon => this.pokemon = pokemon);
+      takeUntil(this._destroy$)
+    ).subscribe(pokemon => this.pokemon$ = pokemon);
   }
 
   ngOnDestroy() {
-    this.destroy$.next(true);
-    this.destroy$.unsubscribe();
+    this._destroy$.next(true);
+    this._destroy$.unsubscribe();
   }
 }

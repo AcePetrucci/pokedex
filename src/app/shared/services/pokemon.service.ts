@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { pokedex } from '../mocks/pokedex';
 import { of } from 'rxjs';
-import { map, filter, tap } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 
 @Injectable()
 export class PokemonService {

@@ -4,4 +4,4 @@ A really really simple (but good looking) Pokedex. The navigation is one by one 
 
 ## Running the Pokedex
 
-This Pokedex was made using Angular 7, so just run `npm run start` to see the magic.
+This Pokedex was made using Angular 7, so just run `npm i` and `npm run start` to see the magic.

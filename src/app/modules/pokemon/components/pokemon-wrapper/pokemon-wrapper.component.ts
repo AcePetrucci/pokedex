@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter, OnInit, OnDestroy } from '@angular/core';
+import { Component, Input, OnInit, OnDestroy } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 
 import { takeUntil } from 'rxjs/operators';
@@ -17,10 +17,7 @@ export class PokemonWrapperComponent implements OnInit, OnDestroy {
   @Input() weebName: string;
   @Input() index: number;
 
-  @Output() pokeNavigated = new EventEmitter();
-
-  private destroy$: Subject<boolean> = new Subject<boolean>();
-
+  private _destroy$: Subject<boolean> = new Subject<boolean>();
   backgroundColor: any;
 
   constructor(private router: Router) { }
@@ -28,17 +25,9 @@ export class PokemonWrapperComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.getBackgroundColor();
 
-    this.router.events.pipe(takeUntil(this.destroy$)).subscribe(ev => {
+    this.router.events.pipe(takeUntil(this._destroy$)).subscribe(ev => {
       if (ev instanceof NavigationEnd) { this.getBackgroundColor(); }
     });
-  }
-  ngOnDestroy() {
-    this.destroy$.next(true);
-    this.destroy$.unsubscribe();
-  }
-
-  getImageName() {
-    return `${formatIndex(this.index)}${this.name}`;
   }
 
   getBackgroundColor() {
@@ -48,12 +37,21 @@ export class PokemonWrapperComponent implements OnInit, OnDestroy {
     }, 50);
   }
 
+  getImageName() {
+    return `${formatIndex(this.index)}${this.name}`;
+  }
+
   nextPokemon() {
     return this.index + 1;
   }
 
   previousPokemon() {
     return this.index - 1;
+  }
+
+  ngOnDestroy() {
+    this._destroy$.next(true);
+    this._destroy$.unsubscribe();
   }
 
 }
