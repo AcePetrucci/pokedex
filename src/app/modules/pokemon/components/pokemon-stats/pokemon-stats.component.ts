@@ -1,9 +1,10 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'app-pokemon-stats',
   templateUrl: './pokemon-stats.component.html',
-  styleUrls: ['./pokemon-stats.component.styl']
+  styleUrls: ['./pokemon-stats.component.styl'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PokemonStatsComponent {
 
@@ -12,7 +13,7 @@ export class PokemonStatsComponent {
 
   constructor() { }
 
-  getImagePath(type) {
+  getImagePath(type: string) {
     return `../../../../../assets/images/types/${type}.png`;
   }
 

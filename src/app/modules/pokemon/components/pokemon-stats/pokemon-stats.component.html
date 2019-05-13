@@ -1,6 +1,10 @@
 <div class="specs">
   <div class="types">
-    <div class="type" *ngFor="let type of types" [ngStyle]="{'background-image': 'url(' + getImagePath(type) + ')'}"></div>
+    <div
+      class="type"
+      *ngFor="let type of types"
+      [ngStyle]="{'background-image': 'url(' + getImagePath(type) + ')'}"
+    ></div>
   </div>
 
   <div class="stats">

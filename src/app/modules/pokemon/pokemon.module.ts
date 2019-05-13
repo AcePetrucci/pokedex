@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 import { PokemonComponent } from './pokemon.component';
 import { PokemonRoutingModule } from './pokemon-routing.module';
@@ -18,8 +18,8 @@ import { PokemonDetailsPageComponent } from './pages/pokemon-details/pokemon-det
     PokemonDetailsPageComponent,
   ],
   imports: [
-    CommonModule,
-    PokemonRoutingModule
+    PokemonRoutingModule,
+    SharedModule,
   ],
 })
 export class PokemonModule { }
