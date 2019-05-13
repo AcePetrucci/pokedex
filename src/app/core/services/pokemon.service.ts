@@ -3,7 +3,10 @@ import { pokedex } from '../../shared/mocks/pokedex';
 import { of } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
+
 export class PokemonService {
   constructor() { }
 
