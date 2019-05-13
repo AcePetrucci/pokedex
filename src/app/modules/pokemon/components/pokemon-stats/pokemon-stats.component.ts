@@ -14,7 +14,7 @@ export class PokemonStatsComponent {
   constructor() { }
 
   getImagePath(type: string) {
-    return `../../../../../assets/images/types/${type}.png`;
+    return `/assets/images/types/${type}.png`;
   }
 
 }
