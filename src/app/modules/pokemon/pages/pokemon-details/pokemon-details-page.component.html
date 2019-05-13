@@ -1,0 +1,18 @@
+<app-pokemon-wrapper
+  [index]="pokemon.id"
+  [name]="pokemon.name.english"
+  [weebName]="pokemon.name.japanese"
+  (pokeNavigated)="changePokemon($event)"
+>
+  <app-pokemon-header
+    [index]="pokemon.id"
+    [name]="pokemon.name.english"
+  ></app-pokemon-header>
+
+  <div class="details">
+    <app-pokemon-stats
+      [types]="pokemon.type"
+      [stats]="pokemon.base"
+    ></app-pokemon-stats>
+  </div>
+</app-pokemon-wrapper>

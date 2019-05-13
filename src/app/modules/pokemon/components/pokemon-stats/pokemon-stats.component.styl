@@ -1,0 +1,55 @@
+.specs
+  & > .types
+    display flex
+
+    & > .type
+      width 64px
+      height 64px
+      background-color #fff
+      background-size 75% 75%
+      background-position center
+      background-repeat no-repeat
+      border-radius 999px
+      box-shadow 0 20px 25px -10px rgba(0,0,0,.15)
+      margin-right 12px
+
+  & > .stats
+    margin-top 18px
+
+    @media screen and (max-width: 1440px) {
+      width: 320px
+    }
+
+    & > .title
+      font-family 'Eviolite', sans-serif
+      font-size 62px
+      color #fff
+
+    & > .labels
+      margin-top 12px
+      position relative
+      display flex
+      flex-wrap wrap
+      padding-left 20px
+
+      &::before
+        content ''
+        height: 104%;
+        position absolute
+        left 0
+        width: 4px;
+        background-color rgba(255,255,255,.35)
+        margin-right 12px
+        border-radius 2px
+        top 2%
+
+      & > .stat
+        padding 6px 16px
+        background-color #fff
+        font-size 20px
+        color #000
+        font-family 'Eviolite', sans-serif
+        border-radius 8px
+        margin 8px 10px 0 0
+        box-shadow 0 20px 25px -10px rgba(0,0,0,.15)
+        text-transform uppercase

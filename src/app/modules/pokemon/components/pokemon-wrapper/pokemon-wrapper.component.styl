@@ -1,0 +1,78 @@
+.pokemon-wrapper
+  background-color #92d1b4
+  min-height calc(100vh - 80px)
+  padding 40px
+  display flex
+
+  & > .presentation
+    width 55%
+    min-height calc(100vh - 80px)
+    position relative
+
+    @media screen and (min-width 1880px)
+      width 40%
+
+    & > .art
+      width 100%
+      display flex
+      justify-content: flex-end
+      align-items: center
+      position absolute
+      top 50%
+      transform translateY(-50%)
+
+      & > img
+        width 400px
+        height 400px
+
+      & > .weeb-name
+        position absolute
+        top 10%
+        transform translateX(0)
+        color rgba(0, 0, 0, 0.4)
+        font-size 130px
+        font-weight 600
+        white-space nowrap
+
+        @media screen and (max-width 1440px)
+          transform translateX(-20px)
+          font-size 100px
+
+        @media screen and (max-width 1180px)
+          transform translateX(-20px)
+          font-size 90px
+
+.arrow
+  cursor pointer
+  position absolute
+  left calc(50% - 30px)
+  padding 30px
+
+  &.-disabled
+    cursor none
+    pointer-events none
+
+  &.-up
+    transform rotate(-90deg)
+    top 0
+
+  &.-down
+    transform rotate(90deg)
+    bottom 0
+
+  &::before, &::after
+    content ''
+    display block
+    width 4px
+    height 64px
+    background-color rgba(255, 255, 255, 0.5)
+
+  &::after
+    transform rotate(45deg) translate(-1px, -14px)
+
+  &::before
+    transform rotate(-45deg) translate(1px, 13px)
+
+  &:hover
+    &::after, &::before
+      background-color #fff

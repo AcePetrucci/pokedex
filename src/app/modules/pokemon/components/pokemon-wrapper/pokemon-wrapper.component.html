@@ -1,0 +1,27 @@
+<div class="pokemon-wrapper" [ngStyle]="{'background-color': 'rgb(' + backgroundColor + ')'}">
+  <a
+    [routerLink]="'/pokemon/details/' + previousPokemon()"
+    [ngClass]="{'-disabled': previousPokemon() === 0}"
+    class="arrow -up"
+  ></a>
+
+  <div class="presentation">
+    <ng-content select="app-pokemon-header"></ng-content>
+
+    <div class="art">
+      <img id="pokemon-art" src="assets/images/pokemon/{{getImageName()}}.png" alt="">
+
+      <div class="weeb-name">
+        {{weebName}}
+      </div>
+    </div>
+  </div>
+
+  <ng-content></ng-content>
+
+  <a
+    [routerLink]="'/pokemon/details/' + nextPokemon()"
+    [ngClass]="{'-disabled': nextPokemon() === 810}"
+    class="arrow -down"
+  ></a>
+</div>
